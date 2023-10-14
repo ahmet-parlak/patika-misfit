@@ -49,6 +49,10 @@ app.use('*', (req, res, next) => {
 });
 app.use('/', pageRouter);
 
+app.use((req, res) => {
+  res.status(404).render('404');
+});
+
 //LISTEN
 const port = process.env.PORT ?? 5000;
 app.listen(port, () => console.log(`🚀 The server running at port ${port}`));
