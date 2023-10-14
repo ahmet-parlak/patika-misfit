@@ -6,14 +6,6 @@ exports.getAboutPage = (req, res) => {
   const currentPage = 'about';
   res.status(200).render('about', { currentPage });
 };
-exports.getServicePage = (req, res) => {
-  const currentPage = 'service';
-  res.status(200).render('service', { currentPage });
-};
-exports.getNewsPage = (req, res) => {
-  const currentPage = 'news';
-  res.status(200).render('news', { currentPage });
-};
 exports.getTrainerPage = (req, res) => {
   const currentPage = 'trainer';
   res.status(200).render('trainer', { currentPage });
@@ -25,4 +17,8 @@ exports.getGalleryPage = (req, res) => {
 exports.getContactPage = (req, res) => {
   const currentPage = 'contact';
   res.status(200).render('contact', { currentPage });
+};
+exports.getLoginPage = (req, res) => {
+  const currentPage = 'login';
+  res.status(200).render('login', { currentPage });
 };

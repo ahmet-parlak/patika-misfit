@@ -1,0 +1,67 @@
+<!-- header -->
+<%- include('partials/_header') %>
+<!-- navigation -->
+<%- include('partials/_navigation') %>
+<!-- end header -->
+<div class="back_re">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title">
+          <h2>Login Or Register</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  forms -->
+<div id="contact" class="contact">
+  <div class="container">
+    <div class="row">
+      <!-- login -->
+      <div class="col-md-6">
+        <h2>Login</h2>
+        <form id="request" class="main_form" method="POST" action="/auth/login">
+          <div class="row">
+            <div class="col-md-12">
+              <input class="contactus" placeholder="Email" type="type" name="email" required>
+            </div>
+            <div class="col-md-12 ">
+              <input class="contactus" placeholder="Password" type="password" name="password" required>
+            </div>
+            <div class="col-md-12 text-center">
+              <button class="send_btn">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- register -->
+      <div class="col-md-6">
+        <h2>Register</h2>
+        <form class="main_form" method="POST" action="/auth/user">
+          <div class="row">
+            <div class="col-md-12 ">
+              <input class="contactus" placeholder="Your Name" type="type" name="name" autocomplete="off" required>
+            </div>
+            <div class="col-md-12">
+              <input class="contactus" placeholder="Your Email" type="email" name="email" autocomplete="off" required>
+            </div>
+            <div class="col-md-12">
+              <input class="contactus" placeholder="Password" type="password" name="password" required>
+            </div>
+            <div class="col-md-12">
+              <input class="contactus" placeholder="Confirm Password" type="password" name="confirm_password" required>
+            </div>
+            <div class="col-md-12 text-end">
+              <button class="send_btn">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end contact -->
+<!--  footer -->
+<%- include('partials/_footer') %>
