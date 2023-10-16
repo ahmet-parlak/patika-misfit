@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 require('dotenv').config();
 
 const pageRouter = require('./routes/pageRoute');
+const authRouter = require('./routes/authRoute');
 
 //DB CONNECTION
 mongoose
@@ -44,10 +45,11 @@ app.use((req, res, next) => {
 
 //ROUTES
 app.use('*', (req, res, next) => {
-  userIN = req.session.userID;
+  userIN = req.session.user;
   next();
 });
 app.use('/', pageRouter);
+app.use('/auth', authRouter);
 
 app.use((req, res) => {
   res.status(404).render('404');

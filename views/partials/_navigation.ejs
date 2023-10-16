@@ -7,7 +7,7 @@
           <div class="full">
             <div class="center-desk">
               <div class="logo">
-                <a href="/"><img src="images/logo.png" alt="#" /></a>
+                <a href="/"><img src="/images/logo.png" alt="#" /></a>
               </div>
             </div>
           </div>
@@ -35,9 +35,20 @@
                 <li class="nav-item <%= currentPage === 'contact' ? 'active':'' %>">
                   <a class="nav-link" href="/contact">Contact</a>
                 </li>
+
+                <% if (userIN) { %>
+                <li class="nav-item <%= currentPage === 'login' ? 'active':'' %> d-flex">
+                  <a class="nav-link" href="#"> <%= userIN.name %> </a>
+                </li>
+                <li class="nav-item <%= currentPage === 'login' ? 'active':'' %> d-flex">
+                  <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+                <%}else{%>
                 <li class="nav-item <%= currentPage === 'login' ? 'active':'' %>">
                   <a class="nav-link" href="/login">Login / Register</a>
                 </li>
+                <% } %>
+
               </ul>
             </div>
           </nav>
