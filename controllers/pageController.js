@@ -10,9 +10,9 @@ exports.getTrainerPage = (req, res) => {
   const currentPage = 'trainer';
   res.status(200).render('trainer', { currentPage });
 };
-exports.getGalleryPage = (req, res) => {
-  const currentPage = 'gallery';
-  res.status(200).render('gallery', { currentPage });
+exports.getTrainingPage = (req, res) => {
+  const currentPage = 'training';
+  res.status(200).render('training', { currentPage });
 };
 exports.getContactPage = (req, res) => {
   const currentPage = 'contact';
