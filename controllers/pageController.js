@@ -11,7 +11,17 @@ exports.getAboutPage = (req, res) => {
 };
 exports.getTrainerPage = (req, res) => {
   const currentPage = 'trainer';
-  res.status(200).render('trainer', { currentPage });
+  let trainers = [];
+  User.find({ role: 'trainer' })
+    .then((documents) => {
+      trainers = documents;
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() =>
+      res.status(200).render('trainer', { currentPage, trainers })
+    );
 };
 exports.getTrainingPage = (req, res) => {
   const currentPage = 'training';
