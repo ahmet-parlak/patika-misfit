@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const Schema = mongoose.Schema;
 
@@ -9,8 +10,14 @@ const TrainingSchema = new Schema({
   trainer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
   createdAt: { type: Date, default: Date.now },
+});
+
+TrainingSchema.pre('validate', function (next) {
+  this.slug = slugify(this.name, { lower: true, strict: true });
+  next();
 });
 
 TrainingSchema.pre('findOneAndUpdate', function (next) {
@@ -19,7 +26,9 @@ TrainingSchema.pre('findOneAndUpdate', function (next) {
   if (updateData.name) {
     this.findOneAndUpdate(
       {},
-      { $set: slugify(updateData.name, { lower: true, strict: true }) }
+      {
+        $set: { slug: slugify(updateData.name, { lower: true, strict: true }) },
+      }
     );
   }
   next();

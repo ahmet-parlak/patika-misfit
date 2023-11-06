@@ -1,0 +1,94 @@
+<!-- header -->
+<%- include('partials/_header') %>
+<!-- navigation -->
+<%- include('partials/_navigation') %>
+
+<!-- end header -->
+<div class="back_re">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- dashboard -->
+<div class="gallery">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <h2>Welcome <%= user.name %></h2>
+          <p>You can manage your trainings here</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="tz-gallery w-100 text-center">
+        <div class="col-sm-12">
+          <div class="row">
+            <!-- Dashboard Trainings -->
+            <% 
+              if (['admin', 'trainer'].includes(user.role)) {
+              trainings.forEach(training => { %>
+            <%- include('components/dashboard_training', {training}); -%>
+            <%})} %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if (user.role === 'admin' || user.role === 'trainer') { %>
+    <div class="row mt-5">
+      <div class="col-12 text-center">
+        <div class="add-training">
+          <button class="btn-lg btn-light font-weight-bold" data-toggle="modal" data-target="#addTrainingModal">Add New Training</button>
+        </div>
+      </div>
+      <!-- Add Training Modal -->
+      <div class="modal fade" id="addTrainingModal" tabindex="-1" role="dialog" aria-labelledby="addTrainingModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title font-weight-bolder p-0">Add New Training</h3>
+            </div>
+            <form class="main_form" method="POST" action="/training">
+              <div class="modal-body">
+                <% 
+                let oldName = '';
+                let oldDescription = '';
+                if (flashMessages.trainingOldValues) {
+                    oldName = flashMessages.trainingOldValues[0].name;
+                    oldDescription = flashMessages.trainingOldValues[0].description;
+                }
+               %>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <input class="contactus" placeholder="Training Name" type="type" name="name" value="<%= oldName %>" autocomplete="off" required>
+                  </div>
+                  <div class="col-md-12">
+                    <textarea class="textarea" placeholder="Description" type="type" name="description" autocomplete="off" required><%= oldDescription %></textarea>
+                  </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Training</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}%>
+  </div>
+</div>
+<!-- end gallery -->
+
+<!--  footer -->
+<%- include('partials/_footer') %>

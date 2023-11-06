@@ -48,6 +48,7 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/jquery-3.0.0.min.js"></script>
+<script src="/js/sweetalert2.all.js"></script>
 <!-- sidebar -->
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/custom.js"></script>
@@ -55,6 +56,27 @@
 <script>
   baguetteBox.run('.tz-gallery');
 </script>
+<script src="/js/app.js"></script>
+<!-- alerts -->
+<% if(flashMessages.success){ %>
+<script>
+  Swal.fire({
+    title: 'Success',
+    text: '<%= flashMessages.success %>',
+    icon: 'success',
+  })
+</script>
+<% } %>
+
+<% if(flashMessages.errors){ %>
+<script>
+  Swal.fire({
+    title: 'Error',
+    html: '<%= flashMessages.errors.forEach(element => { __append(element); __append("<br>") }); %>',
+    icon: 'error',
+  })
+</script>
+<% } %>
 </body>
 
 </html>

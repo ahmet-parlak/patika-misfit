@@ -37,10 +37,10 @@
                 </li>
 
                 <% if (userIN) { %>
-                <li class="nav-item <%= currentPage === 'login' ? 'active':'' %> d-flex">
-                  <a class="nav-link" href="#"> <%= userIN.name %> </a>
+                <li class="nav-item <%= currentPage === 'dashboard' ? 'active':'' %> d-flex">
+                  <a class="nav-link" href="/dashboard"> Dashboard </a>
                 </li>
-                <li class="nav-item <%= currentPage === 'login' ? 'active':'' %> d-flex">
+                <li class="nav-item d-flex">
                   <a class="nav-link" href="/auth/logout">Logout</a>
                 </li>
                 <%}else{%>

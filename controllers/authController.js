@@ -46,10 +46,11 @@ exports.login = (req, res) => {
             id: user.id,
             name: user.name,
             email: user.email,
+            role: user.role,
           };
 
           req.flash('success', 'Login successful');
-          return res.redirect('/');
+          return res.redirect('/dashboard');
         }
 
         req.flash('loginErrors', ['Email or password incorrect!']);
