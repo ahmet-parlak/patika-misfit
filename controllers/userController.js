@@ -8,7 +8,7 @@ exports.joinTraining = async (req, res) => {
     await user.trainings.addToSet(training.id);
     await user.save();
 
-    req.flash('success', 'You have successfuly joined.');
+    req.flash('success', 'You have successfully joined.');
     res.redirect('/dashboard');
   } catch (error) {
     console.log(error);
@@ -16,4 +16,17 @@ exports.joinTraining = async (req, res) => {
     res.redirect('/trainings');
   }
 };
-exports.quitTraining = (req, res) => {};
+exports.quitTraining = async (req, res) => {
+  try {
+    const user = await User.findById(req.session.user.id);
+    await user.trainings.pull(req.params.id);
+    await user.save();
+
+    req.flash('success', 'You have successfully quit.');
+    res.redirect('/dashboard');
+  } catch (error) {
+    console.log(error);
+    req.flash('errors', ['Somethings wrong. Please try again.']);
+    res.redirect('/dashboard');
+  }
+};

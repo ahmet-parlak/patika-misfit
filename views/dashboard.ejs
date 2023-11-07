@@ -31,17 +31,20 @@
         <div class="col-sm-12">
           <div class="row">
             <!-- Dashboard Trainings -->
+            <% user.trainings.forEach(training => { %>
+            <%- include('components/dashboard_training', {training}); -%>
+            <%}) %>
             <% 
               if (['admin', 'trainer'].includes(user.role)) {
               trainings.forEach(training => { %>
-            <%- include('components/dashboard_training', {training}); -%>
+            <%- include('components/manage_training', {training}); -%>
             <%})} %>
 
           </div>
         </div>
       </div>
     </div>
-    <% if (user.role === 'admin' || user.role === 'trainer') { %>
+    <% if (['admin', 'trainer'].includes(user.role)) { %>
     <div class="row mt-5">
       <div class="col-12 text-center">
         <div class="add-training">
