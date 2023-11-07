@@ -25,7 +25,16 @@ exports.getTrainerPage = (req, res) => {
 };
 exports.getTrainingPage = (req, res) => {
   const currentPage = 'training';
-  res.status(200).render('training', { currentPage });
+  let trainings = [];
+
+  Training.find().populate('trainer')
+    .then((documents) => {
+      trainings = documents;
+    })
+    .catch((err) => console.log(err))
+    .finally(() =>
+      res.status(200).render('training', { currentPage, trainings })
+    );
 };
 exports.getContactPage = (req, res) => {
   const currentPage = 'contact';

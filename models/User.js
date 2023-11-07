@@ -8,10 +8,12 @@ const UserSchema = new Schema({
   email: { type: String, unique: true, required: true, trim: true },
   password: { type: String, required: true },
   role: { type: String, enum: ['user', 'trainer', 'admin'], default: 'user' },
-  trainings: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Training',
-  },
+  trainings: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Training',
+    },
+  ],
   created_at: { type: Date, default: Date.now },
 });
 

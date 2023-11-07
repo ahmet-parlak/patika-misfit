@@ -11,6 +11,7 @@ require('dotenv').config();
 const pageRouter = require('./routes/pageRoute');
 const authRouter = require('./routes/authRoute');
 const trainingRouter = require('./routes/trainingRoute');
+const userRouter = require('./routes/userRoute');
 
 //DB CONNECTION
 mongoose
@@ -55,6 +56,7 @@ app.use('*', (req, res, next) => {
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
 app.use('/training', trainingRouter);
+app.use('/user', userRouter);
 
 app.use((req, res) => {
   res.status(404).render('404');
