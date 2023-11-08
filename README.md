@@ -1,4 +1,4 @@
-# Patika-Freelancer
+# Patika-Misfit
 Misfit is a fitness site built with **Express** and **MongoDB** and [Misfit-Fitness theme](https://html.design/download/misfit-fitness-html-template/) for [this task](https://academy.patika.dev/courses/nodejs-backend-patikasi-projeleri/Misfit-Proje) in Patika.dev NodeJS course.
 
 ## Getting Started
