@@ -37,13 +37,37 @@
 
               <div class="mt-1 align-items-center">
                 <div class="title text-center text-light h4 mb-0 mx-1 text-capitalize">
-                  <div class=""><%= training.name %></div>
+                  <div class="text-center text-capitalize"><%= training.name %></div>
                   <div class="mb-2">
                     <a href="/trainer/<%= training.trainer.id %>">
                       <p class="text-secondary"><%= training.trainer.name %></p>
                     </a>
                   </div>
-                  <a href="/user/training/<%= training.id %>?_method=POST" class="btn-lg btn-primary w-100"><i class="fa fa-hand-o-right"></i> Join The Training</a>
+                  <button class="btn-lg btn-primary w-100" data-toggle="modal" data-target="#training-<%= training.id %>-modal"><i class="fa fa-hand-o-right"></i> Learn More</button>
+                </div>
+                <!-- Training Modal -->
+                <div class="modal fade" id="training-<%= training.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="training<%= training.id %>-modal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h3 class="modal-title font-weight-bolder p-0 text-capitalize"><%= training.name %></h3>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+
+                          <div class="col-md-12">
+                            <p><%= training.description %></p>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="/user/training/<%= training.id %>?_method=POST" class="btn btn-primary text-center">Join The Training <i class="fa fa-rocket" aria-hidden="true"></i></a>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
 
               </div>

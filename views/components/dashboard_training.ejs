@@ -1,7 +1,32 @@
 <div class="col-sm-6 col-md-4 mb-4">
-  <a class="gallery_img mb-0">
-    <img src="/images/gallery<%= Math.floor(Math.random() * 6) + 1 %>.jpg" alt="Bridge">
+  <a class="gallery_img mb-0 cursor-pointer" data-toggle="modal" data-target="#training-<%= training.id %>-modal">
+    <img src="/images/gallery<%= Math.floor(Math.random() * 6) + 1 %>.jpg" alt="Bridge" >
   </a>
+  <!-- Training Modal -->
+  <div class="modal fade" id="training-<%= training.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="training<%= training.id %>-modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title font-weight-bolder p-0 text-capitalize"><%= training.name %></h3>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+
+            <div class="col-md-12">
+              <p><%= training.description %></p>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="/user/training/<%= training.id %>?_method=DELETE" class="btn btn-danger">Quit The Training <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </a>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <div class="mt-1 align-items-center">
     <div class="title text-center text-light h4 mb-0 mx-1 text-capitalize">
@@ -11,7 +36,7 @@
           <p class="text-secondary"><%= training.trainer.name %></p>
         </a>
       </div>
-      <a href="/user/training/<%= training.id %>?_method=DELETE" class="btn-lg btn-danger w-100">Quit The Training</a>
+      <button class="btn-lg btn-primary w-100" data-toggle="modal" data-target="#training-<%= training.id %>-modal"><i class="fa fa-info-circle" aria-hidden="true"></i> Show More</button>
     </div>
 
   </div>

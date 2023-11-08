@@ -939,3 +939,8 @@ ul.link_menu li a {
 .margin_0 {
      margin: 0 !important;
 }
+
+
+.cursor-pointer{
+     cursor: pointer;
+}
