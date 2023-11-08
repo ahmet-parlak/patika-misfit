@@ -9,7 +9,6 @@ const trainingController = require('../controllers/trainingController');
 const router = express.Router();
 
 router.all('*', authMiddleware);
-router.get('/:id', trainingController.show);
 
 router.all('*', roleMiddleware(['admin', 'trainer']));
 router.post('/', trainingValidator, trainingController.create);

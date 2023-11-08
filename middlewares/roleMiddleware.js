@@ -5,7 +5,7 @@ module.exports = (roles) => {
     if (roles.includes(userRole)) {
       next();
     } else {
-      return res.status(401).send('You are not authorized for this operation');
+      return res.status(401).render('401');
     }
   };
 };
