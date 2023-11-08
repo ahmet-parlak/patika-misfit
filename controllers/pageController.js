@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb');
+
 const User = require('../models/User');
 const Training = require('../models/Training');
 
@@ -9,7 +11,7 @@ exports.getAboutPage = (req, res) => {
   const currentPage = 'about';
   res.status(200).render('about', { currentPage });
 };
-exports.getTrainerPage = (req, res) => {
+exports.getTrainersPage = (req, res) => {
   const currentPage = 'trainer';
   let trainers = [];
   User.find({ role: 'trainer' })
@@ -20,14 +22,35 @@ exports.getTrainerPage = (req, res) => {
       console.log(err);
     })
     .finally(() =>
-      res.status(200).render('trainer', { currentPage, trainers })
+      res.status(200).render('trainers', { currentPage, trainers })
     );
+};
+exports.getTrainerPage = async (req, res) => {
+  const currentPage = 'trainer';
+  const id = req.params.id;
+
+  try {
+    const trainer = await User.findOne({
+      _id: new ObjectId(id),
+      role: { $in: ['trainer', 'admin'] },
+    });
+
+    const trainings = await Training.find({
+      trainer: new ObjectId(trainer.id),
+    });
+
+    res.status(200).render('trainer', { currentPage, trainer, trainings });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/trainer');
+  }
 };
 exports.getTrainingPage = (req, res) => {
   const currentPage = 'training';
   let trainings = [];
 
-  Training.find().populate('trainer')
+  Training.find()
+    .populate('trainer')
     .then((documents) => {
       trainings = documents;
     })

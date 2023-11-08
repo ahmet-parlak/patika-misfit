@@ -1,0 +1,51 @@
+<!-- header -->
+<%- include('partials/_header') %>
+<!-- navigation -->
+<%- include('partials/_navigation') %>
+<!-- end header -->
+<div class="back_re">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title">
+          <h2>Our Trainers</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- trainers -->
+<div class="trainers">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <p>We have <%= trainers.length %> trainers available</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <% trainers.forEach(trainer => {%>
+      <div class="col-md-4">
+        <div id="trai" class="trainer_box">
+          <a href="/trainer/<%= trainer.id  %>">
+            <div class="trainer_img">
+              <figure><img src="images/tra.jpg" alt="#" /></figure>
+            </div>
+            <div class="trainer">
+              <h3><%= trainer.name  %></h3>
+              <p></p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <%  }) %>
+
+
+    </div>
+  </div>
+</div>
+<!-- end trainers -->
+<!--  footer -->
+<%- include('partials/_footer') %>

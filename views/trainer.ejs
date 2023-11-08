@@ -2,48 +2,59 @@
 <%- include('partials/_header') %>
 <!-- navigation -->
 <%- include('partials/_navigation') %>
+
 <!-- end header -->
 <div class="back_re">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="title">
-          <h2>Our Trainers</h2>
+          <h2><%= trainer.name %> Trainings</h2>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- trainers -->
-<div class="trainers">
+<!-- gallery -->
+<div class="gallery">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="titlepage">
-          <p>We have <%= trainers.length %> trainers available</p>
+          <p><%= trainings.length %> trainings available</p>
         </div>
       </div>
     </div>
     <div class="row">
+      <div class="tz-gallery w-100">
+        <div class="col-sm-12">
+          <div class="row">
+            <% trainings.forEach((training, index) => {%>
+            <div class="col-sm-6 col-md-4 mb-4">
+              <a class="gallery_img mb-0">
+                <img src="/images/gallery<%= (index % 6) + 1 %>.jpg" alt="Bridge">
+              </a>
 
-      <% trainers.forEach(trainer => {%>
-      <div class="col-md-4">
-        <div id="trai" class="trainer_box">
-          <div class="trainer_img">
-            <figure><img src="images/tra.jpg" alt="#" /></figure>
-          </div>
-          <div class="trainer">
-            <h3><%= trainer.name  %></h3>
-            <p></p>
+              <div class="mt-1 align-items-center">
+                <div class="title text-center text-light h4 mb-0 mx-1 text-capitalize">
+                  <div class=""><%= training.name %></div>
+                  <div class="mb-2">
+                    <a href="/trainer/<%= training.trainer.id %>">
+                      <p class="text-secondary"><%= training.trainer.name %></p>
+                    </a>
+                  </div>
+                  <a href="/user/training/<%= training.id %>?_method=POST" class="btn-lg btn-primary w-100"><i class="fa fa-hand-o-right"></i> Join The Training</a>
+                </div>
+
+              </div>
+            </div>
+            <%}); %>
           </div>
         </div>
       </div>
-      <%  }) %>
-
-
     </div>
   </div>
 </div>
-<!-- end trainers -->
+<!-- end gallery -->
 <!--  footer -->
 <%- include('partials/_footer') %>

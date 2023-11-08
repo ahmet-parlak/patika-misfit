@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.get('/', pageController.getIndexPage);
 router.get('/about', pageController.getAboutPage);
-router.get('/trainer', pageController.getTrainerPage);
+router.get('/trainer', pageController.getTrainersPage);
+router.get('/trainer/:id', pageController.getTrainerPage);
 router.get('/training', pageController.getTrainingPage);
 router.get('/contact', pageController.getContactPage);
 router.get('/login', redirectMiddleware, pageController.getLoginPage);
